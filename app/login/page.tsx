@@ -24,7 +24,7 @@ export default function Login() {
     })
 
     if (result?.error) {
-      setError('Virheellinen sähköposti tai salasana')
+      setError('Wrong email or password!')
     } else {
       router.push('/')
     }
@@ -62,7 +62,7 @@ export default function Login() {
             {error && <p className="text-red-500 mt-2">{error}</p>}
           </CardContent>
           <CardFooter>
-            <Button type="submit" className="w-full">Kirjaudu</Button>
+            <Button type="submit" className="w-full">Login</Button>
           </CardFooter>
         </form>
       </Card>
