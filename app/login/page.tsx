@@ -34,8 +34,8 @@ export default function Login() {
     <div className="flex min-h-screen items-center justify-center">
       <Card className="w-[350px]">
         <CardHeader>
-          <CardTitle>Kirjaudu sisään</CardTitle>
-          <CardDescription>Syötä sähköpostiosoitteesi ja salasanasi</CardDescription>
+          <CardTitle>Login</CardTitle>
+          <CardDescription>Please give your email and password</CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent>
@@ -43,7 +43,7 @@ export default function Login() {
               <div className="flex flex-col space-y-1.5">
                 <Input
                   id="email"
-                  placeholder="Sähköposti"
+                  placeholder="Email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -52,7 +52,7 @@ export default function Login() {
               <div className="flex flex-col space-y-1.5">
                 <Input
                   id="password"
-                  placeholder="Salasana"
+                  placeholder="Password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}

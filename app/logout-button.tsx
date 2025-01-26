@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 export default function LogoutButton() {
   return (
     <Button onClick={() => signOut({ callbackUrl: '/login' })}>
-      Kirjaudu ulos
+      Logout
     </Button>
   )
 }
