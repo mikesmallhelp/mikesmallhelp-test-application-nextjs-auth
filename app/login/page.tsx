@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
@@ -8,11 +10,24 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const router = useRouter()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Tässä voit käsitellä kirjautumisen logiikan
-    console.log('Kirjautuminen:', { email, password })
+    setError('')
+
+    const result = await signIn('credentials', {
+      redirect: false,
+      email,
+      password,
+    })
+
+    if (result?.error) {
+      setError('Virheellinen sähköposti tai salasana')
+    } else {
+      router.push('/')
+    }
   }
 
   return (
@@ -44,6 +59,7 @@ export default function Login() {
                 />
               </div>
             </div>
+            {error && <p className="text-red-500 mt-2">{error}</p>}
           </CardContent>
           <CardFooter>
             <Button type="submit" className="w-full">Kirjaudu</Button>
